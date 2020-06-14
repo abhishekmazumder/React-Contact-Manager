@@ -24,17 +24,28 @@ class ContactList extends Component {
 			},
 		],
 	};
+
+	handleDelete = (id) => {
+		const filtereditem = this.state.contacts.filter(
+			(item) => item.id !== id
+		);
+		this.setState({
+			contacts: filtereditem,
+		});
+	};
+
 	render() {
 		const { contacts } = this.state;
 		return (
-			<div>
+			<React.Fragment>
 				{contacts.map((contact) => (
 					<Contact
 						key={contact.id}
 						contact={contact}
+						handleDelete={this.handleDelete}
 					/>
 				))}
-			</div>
+			</React.Fragment>
 		);
 	}
 }

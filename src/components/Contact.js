@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Contact extends Component {
-	state = {};
-	onShowClick = () => {
-		console.log('hello');
+	state = {
+		showInfo: false,
 	};
+
+	onShowClick = (e) => {
+		this.setState({
+			showInfo: !this.state.showInfo,
+		});
+	};
+
 	render() {
-		const { name, email, phone } = this.props.contact;
+		const { id, name, email, phone } = this.props.contact;
+		const { showInfo } = this.state;
+		const { handleDelete } = this.props;
 		return (
 			<div className="card card-body mb-3">
 				<h4>
@@ -15,12 +23,24 @@ class Contact extends Component {
 					<i
 						className="fas fa-sort-down"
 						onClick={this.onShowClick}
+						style={{ cursor: 'pointer' }}
+					></i>
+					<i
+						className="fas fa-times"
+						onClick={() => handleDelete(id)}
+						style={{
+							cursor: 'pointer',
+							float: 'right',
+							color: 'red',
+						}}
 					></i>
 				</h4>
-				<ul className="list-group">
-					<li className="list-group-item">Email: {email}</li>
-					<li className="list-group-item">Phone: {phone}</li>
-				</ul>
+				{showInfo ? (
+					<ul className="list-group">
+						<li className="list-group-item">Email: {email}</li>
+						<li className="list-group-item">Phone: {phone}</li>
+					</ul>
+				) : null}
 			</div>
 		);
 	}
