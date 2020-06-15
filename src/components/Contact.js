@@ -23,7 +23,6 @@ class Contact extends Component {
 	render() {
 		const { id, name, email, phone } = this.props.contact;
 		const { showInfo } = this.state;
-		// const { handleDelete } = this.props;
 		return (
 			<Consumer>
 				{(value) => {
@@ -39,11 +38,13 @@ class Contact extends Component {
 								></i>
 								<i
 									className="fas fa-times"
-									onClick={this.handleDelete.bind(
-										this,
-										id,
-										dispatch
-									)}
+									onClick={()=>this.handleDelete(id,dispatch)} //You can implement delete funtionality this way or below mention way
+									
+									// onClick={this.handleDelete.bind(
+									// 	this,
+									// 	id,
+									// 	dispatch
+									// )}
 									style={{
 										cursor: 'pointer',
 										float: 'right',

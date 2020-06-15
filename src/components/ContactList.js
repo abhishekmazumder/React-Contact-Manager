@@ -13,10 +13,10 @@ class ContactList extends Component {
 	// };
 
 	render() {
-		// const { contacts } = value;
 		return (
 			<Consumer>
 				{(value) => {
+					// const { contacts } = value;
 					return (
 						<React.Fragment>
 							{value.contacts.map((contact) => (
