@@ -37,13 +37,17 @@ class AddContact extends Component {
 			type: 'ADD_CONTACT',
 			payload: newContact,
 		});
-
+		
+		// clear state/input field after adding the contact
 		this.setState({
 			name: '',
 			email: '',
 			phone: '',
 			errors: {},
 		});
+
+		//redirecting to the Home/ContactList after adding the contact
+		this.props.history.push('/');
 	};
 
 	render() {
